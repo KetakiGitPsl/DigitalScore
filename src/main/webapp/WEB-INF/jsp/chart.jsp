@@ -24,7 +24,7 @@
 					$('#entries').append('</table>');
 				}
 			
-			});
+			});   
 		});
 	</script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
