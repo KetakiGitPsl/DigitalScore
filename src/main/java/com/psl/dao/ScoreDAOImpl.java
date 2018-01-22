@@ -18,16 +18,16 @@ public class ScoreDAOImpl implements IScoreDAO{
 	private JdbcTemplate template;
 
 	public void postScore(Score s) {
-		template.update("insert into score (proj_id, score) values (" + s.getProjectId() + " , " + s.getScore() + " )");
+		template.update("insert into score (proj_name, score) values ('" + s.getProjectName() + "', "+ s.getScore() + " )");
 		
 	}
 
 	public List<Score> getScores() {
-		return template.query("select proj_id, ROUND(avg(score)) score from score group by proj_id", new RowMapper<Score>(){
+		return template.query("select proj_name, ROUND(avg(score)) score from score group by proj_name order by score desc", new RowMapper<Score>(){
 
 			public Score mapRow(ResultSet rs, int rownum) throws SQLException {
 				Score s  = new Score();
-				s.setProjectId(rs.getInt("proj_id"));
+				s.setProjectName(rs.getString("proj_name"));
 				s.setScore(rs.getInt("score"));
 				return s;
 			}
@@ -41,7 +41,7 @@ public class ScoreDAOImpl implements IScoreDAO{
 
 			public Score mapRow(ResultSet rs, int rownum) throws SQLException {
 				Score s  = new Score();
-				s.setProjectId(rs.getInt("proj_id"));
+				s.setProjectName(rs.getString("proj_id"));
 				s.setScore(rs.getInt("score"));
 				return s;
 			}

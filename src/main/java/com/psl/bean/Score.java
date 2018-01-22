@@ -6,13 +6,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="score")
 public class Score {
 	
-	private int projectId;
+	private String projectName;
 	private int score;
-	public int getProjectId() {
-		return projectId;
+	public String getProjectName() {
+		return projectName;
 	}
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 	public int getScore() {
 		return score;
@@ -22,8 +22,12 @@ public class Score {
 	}
 	@Override
 	public String toString() {
-		return "Score [projectId=" + projectId + ", score=" + score + "]";
+		return "Score [projectName=" + projectName + ", score=" + score + "]";
 	}
+	
+	
+	
+	
 	
 	
 

@@ -5,48 +5,28 @@
 <head>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-  
-  window.onload = function () {
-	var API_URL = "http://192.168.1.112:8080/DigitalScore/score";
-	  
-	$(document).ready(function(){
-		$.ajax({
-			type: 'GET',
-			url:API_URL,
-			success:function(data){
+	
+		var API_URL = "http://localhost:8080/DigitalScore/score";
+		
+		$(document).ready(function(){
+			$.ajax({
+				type: 'GET',
+				url:API_URL,
+				success:function(data){
+					$(entries).html('');
+					
+					$('#entries').append('<table border="2"><tr><td colspan="1">Project Name</td><td>Avg Score (out of 10)</td></tr>');
 				
-				$(entries).html('');
-				
-				var chart = new CanvasJS.Chart("entries", {
-
-				      title:{
-				        text: "Project Scores"              
-				      },
-				      data: [//array of dataSeries              
-				        { //dataSeries object
-
-				         /*** Change type "column" to "bar", "area", "line" or "pie"***/
-				         type: "column",
-				         dataPoints: data
-				       }
-				       ]
-				     });
-
-				    chart.render();					
-				
-				
+					for (i = 0; i < data.length; i++) { 
+						$('#entries').append('<h1>' + data[i].projectName + ' -> ' + data[i].score + '</h1>');
+					}
+					
+					$('#entries').append('</table>');
+				}
 			
-			}
-		
-		
+			});
 		});
-	});
-	
-	
-	
-    
-  }
-  </script>
+	</script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 <body>
