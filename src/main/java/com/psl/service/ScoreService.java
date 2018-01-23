@@ -21,9 +21,9 @@ public class ScoreService {
 	
 	public List<Score> getScores(){
 		List<Score> list = dao.getScores();
-		for (Score score : list) {
+		/*for (Score score : list) {
 			System.out.println(score);
-		}
+		}*/
 		return list;
 	}
 	
