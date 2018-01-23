@@ -1,0 +1,5 @@
+create table score(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	proj_name VARCHAR(20),
+	score int
+)
