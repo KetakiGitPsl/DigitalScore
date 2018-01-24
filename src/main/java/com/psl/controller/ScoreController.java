@@ -22,7 +22,7 @@ public class ScoreController {
 	@RequestMapping(value="/score", method=RequestMethod.POST)
 	public @ResponseBody Score postScore(@RequestBody Score s){
 		service.postScore(s);
-		System.out.println("done");
+		System.out.println("Posted [Project:" + s.getProjectName() + ", Score:" + s.getScore() + "]");
 		return s;
 		
 	}
