@@ -23,7 +23,7 @@ public class ScoreDAOImpl implements IScoreDAO{
 	}
 
 	public List<Score> getScores() {
-		return template.query("select proj_name, ROUND(avg(score)) score from score group by proj_name order by score desc", new RowMapper<Score>(){
+		return template.query("select proj_name, ROUND(avg(score)) score from score group by proj_name", new RowMapper<Score>(){
 
 			public Score mapRow(ResultSet rs, int rownum) throws SQLException {
 				Score s  = new Score();
